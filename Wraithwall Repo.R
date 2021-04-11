@@ -1,18 +1,21 @@
 library(ggplot2)
+library(dplyr)
+library(readr)
 
-census <- Connecticut_Census_Data_JUST_SNAP
+SNAP <- Connecticut_Census_Data_SNAP_and_Uninsured
+SNAP_Percentage
 
-ggplot(census, aes(x = "NAME", y = "SNAP_Percentage")) +
-  geom_point() +
+
+ggplot(SNAP, aes(x = "SNAP_Percentage", y = "Percent_Uninsured")) +
+  geom_point(aes(color="SNAP_Percentage", shape=SNAP_Percentage)) +
   theme_bw() +
   labs(x = "Zip Code", 
        y = "Percentage of Residents Utilizing Benefits", 
        title = "Percentage of Connecticut Residents Utilizing Food Stamp/SNAP Benefits", 
        subtitle = "Bridgeport and New Haven represent many of the top-utilizing zip codes")
 
-# Now, uncomment the geom_text_repel() above and replot. See what happens to the labels if you adjust the size of your plot window in RStudio. 
 
-# It's messy, but all points are labeled without tremendous overlaps. For this plot, we might be more interested in how far away each point is from the 50% threshold on both axis, or in the outcome of a particular election. So, it might make more sense to pick out points of interest in the data instead of labelling every single point. And this is where geom_text_repel() is powerful.
+# Everything below here is code from a previous assignment; including for reference.
 
 ggplot(elections_historic, aes(x = popular_pct, y = ec_pct,
                                label = winner_label)) + 

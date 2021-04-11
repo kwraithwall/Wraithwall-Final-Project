@@ -1,13 +1,14 @@
 library(ggplot2)
 
-census <- Connecticut_Census_Data_JUST SNAP
+census <- Connecticut_Census_Data_JUST_SNAP
 
 ggplot(census, aes(x = "NAME", y = "SNAP_Percentage")) +
-  geom_point()+
+  geom_point() +
+  theme_bw() +
   labs(x = "Zip Code", 
-       y = "Percentage of Residents Utilizing Food Stamps/SNAP Benefits", 
-       title = "Presidential Elections: Popular & Electoral College Margins", 
-       subtitle = "1824-2016")
+       y = "Percentage of Residents Utilizing Benefits", 
+       title = "Percentage of Connecticut Residents Utilizing Food Stamp/SNAP Benefits", 
+       subtitle = "Bridgeport and New Haven represent many of the top-utilizing zip codes")
 
 # Now, uncomment the geom_text_repel() above and replot. See what happens to the labels if you adjust the size of your plot window in RStudio. 
 

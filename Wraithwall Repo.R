@@ -6,13 +6,18 @@ SNAP <- Connecticut_Census_Data_SNAP_and_Uninsured
 SNAP_Percentage
 
 
-ggplot(SNAP, aes(x = "SNAP_Percentage", y = "Percent_Uninsured")) +
-  geom_point(aes(color="SNAP_Percentage", shape=SNAP_Percentage)) +
+ggplot(SNAP, aes(x = SNAP_Total, y = Total_Uninsured)) +
+  geom_point(color='red') +
   theme_bw() +
-  labs(x = "Zip Code", 
-       y = "Percentage of Residents Utilizing Benefits", 
-       title = "Percentage of Connecticut Residents Utilizing Food Stamp/SNAP Benefits", 
-       subtitle = "Bridgeport and New Haven represent many of the top-utilizing zip codes")
+  geom_smooth(method = "lm") +
+  labs(x = "Total Residents Utilizing SNAP Benefits", 
+       y = "Total Residents Uninsured", 
+       title = "CT Residents Using Food Stamps/SNAP Benefits are Less Likely to be Insured", 
+       subtitle = "Graphic Showing Total number of residents by Zip Code")
+
+ggsave("SNAP vs Uninsured.png",
+       plot = last_plot(),
+       dpi = 300)
 
 
 # Everything below here is code from a previous assignment; including for reference.
